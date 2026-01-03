@@ -16,3 +16,4 @@ build/
 .idea/dictionaries
 .idea/libraries
 .idea/caches
+/local.properties

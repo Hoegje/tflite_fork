@@ -23,6 +23,8 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 28
+    namespace "sq.flutter.tflite"
+
 
     defaultConfig {
         minSdkVersion 19
@@ -33,7 +35,7 @@ android {
     }
 
     dependencies {
-        compile 'org.tensorflow:tensorflow-lite:+'
-        compile 'org.tensorflow:tensorflow-lite-gpu:+'
+        implementation 'org.tensorflow:tensorflow-lite:+'
+        implementation 'org.tensorflow:tensorflow-lite-gpu:+'
     }
 }

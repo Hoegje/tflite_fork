@@ -23,7 +23,8 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
+//import io.flutter.plugin.common.PluginRegistry.Registrar;
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -52,8 +53,9 @@ import java.util.PriorityQueue;
 import java.util.Vector;
 
 
+//public class TflitePlugin implements FlutterPlugin {
 public class TflitePlugin implements MethodCallHandler {
-  private final Registrar mRegistrar;
+//  private final Registrar mRegistrar;
   private Interpreter tfLite;
   private boolean tfLiteBusy = false;
   private int inputSize = 0;
@@ -82,15 +84,23 @@ public class TflitePlugin implements MethodCallHandler {
   List<Integer> parentToChildEdges = new ArrayList<>();
   List<Integer> childToParentEdges = new ArrayList<>();
 
-  public static void registerWith(Registrar registrar) {
-    final MethodChannel channel = new MethodChannel(registrar.messenger(), "tflite");
-    channel.setMethodCallHandler(new TflitePlugin(registrar));
-  }
+//  public static void registerWith(Registrar registrar) {
+//    final MethodChannel channel = new MethodChannel(registrar.messenger(), "tflite");
+//    channel.setMethodCallHandler(new TflitePlugin(registrar));
+//  }
 
-  private TflitePlugin(Registrar registrar) {
-    this.mRegistrar = registrar;
-  }
+//  private TflitePlugin(Registrar registrar) {
+//    this.mRegistrar = registrar;
+//  }
 
+    public void onAttachedToEngine( FlutterPluginBinding binding) {
+        // TODO: your plugin is now attached to a Flutter experience.
+    }
+
+    @Override
+    public void onDetachedFromEngine( FlutterPluginBinding binding) {
+        // TODO: your plugin is no longer attached to a Flutter experience.
+    }
   @Override
   public void onMethodCall(MethodCall call, Result result) {
     if (call.method.equals("loadModel")) {
